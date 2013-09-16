@@ -1,7 +1,9 @@
 ng-bs-daterangepicker
 =====================
 
-Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker)
+Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
+
+Demo: http://luisfarzati.github.io/ng-bs-daterangepicker
 
 Installation
 ------------
