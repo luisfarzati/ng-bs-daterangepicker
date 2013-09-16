@@ -6,6 +6,14 @@ Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.
 How to use it
 -------------
 
+Inject `ngBootstrap` in your application module:
+
+```
+angular.module('myApp', ['ngBootstrap']);
+```
+
+and then just add an `input` of type `daterange`:
+
 ```
 <input type="daterange" ng-model="myDateRange">
 ```
