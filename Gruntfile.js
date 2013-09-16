@@ -28,13 +28,24 @@ module.exports = function(grunt) {
             'test/**/*.js']
         }
       }
-    }    
+    },
+
+    uglify: {
+       options: {
+          preserveComments: 'some',
+          report: 'min'
+       },
+       dist: {
+          files: {
+             'dist/ng-bs-daterangepicker.min.js': ['src/ng-bs-daterangepicker.js']
+          }
+       }
+     }
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Default task(s).
   grunt.registerTask('default', ['jshint', 'karma']);
 };
