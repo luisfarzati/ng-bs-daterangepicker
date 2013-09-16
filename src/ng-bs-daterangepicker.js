@@ -38,7 +38,10 @@ angular.module('ngBootstrap', []).directive('input', function ($compile) {
 			};
 
 			$scope.$watch($attributes.ngModel, function (modelValue) {
-				if (!modelValue || (!modelValue.startDate)) return;
+				if (!modelValue || (!modelValue.startDate)) {
+					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
+					return;
+				}
 				$element.data('daterangepicker').startDate = modelValue.startDate;
 				$element.data('daterangepicker').endDate = modelValue.endDate;
 				$element.data('daterangepicker').updateView();
