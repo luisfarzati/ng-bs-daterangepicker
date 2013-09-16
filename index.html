@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="components/bootstrap-daterangepicker/daterangepicker-bs3.css">
+<script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="components/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="components/angular/angular.min.js"></script>
+<script type="text/javascript" src="ng-bs-daterangepicker.js"></script>
+<style>
+	strong { color: blue; }
+</style>
+<div ng-app="ngBootstrap" ng-controller="sample" class="container">
+	<h1>ng-bootstrap-daterangepicker <small>0.0.1</small></h1>
+	<a href="https://github.com/luisfarzati/ng-bs-daterangepicker">source</a>
+	<hr>
+	<div>
+		<pre>&lt;input type="<strong>daterange</strong>" ng-model="dates1"> <span>{{</span>dates1|json}}</pre>
+		<input type="daterange" ng-model="dates1"> <code>{{dates1|json}}</code>
+	</div>
+	<hr>
+	<div>
+		<pre>&lt;input type="daterange" ng-model="dates2" <strong>format="MMM DD" separator="/"</strong>> <span>{{</span>dates2|json}}</pre>
+		<input type="daterange" ng-model="dates2" format="MMM DD" separator="/"> <code>{{dates2|json}}</code>
+	</div>
+	<hr>
+	<div>
+		<pre>&lt;input type="daterange" ng-model="dates3" separator="/" <strong>min-date="2013-09-10" max-date="2013-09-20" limit="1 day"</strong>> <span>{{</span>dates3|json}}</pre>
+		<input type="daterange" ng-model="dates3" separator="/" min-date="2013-09-10" max-date="2013-09-20" limit="1 day" > <code>{{dates3|json}}</code>
+	</div>
+</div>
+
+ <script type="text/javascript">	
+	function sample($scope, $filter) {
+		$scope.dates2 = { startDate: moment('2013-09-20'), endDate: moment('2013-09-25') };
+		$scope.dates3 = { startDate: moment(), endDate: moment().add(1, 'day') };
+		$scope.dates4 = { startDate: moment().subtract(1, 'day'), endDate: moment().subtract(1, 'day') };
+	}
+</script>
