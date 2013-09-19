@@ -49,5 +49,22 @@ describe('the daterange directive', function () {
 		expect(element.data('daterangepicker').minDate.format(normalized)).toBe(moment(minDate).format(normalized));
 		expect(element.data('daterangepicker').maxDate.format(normalized)).toBe(moment(maxDate).format(normalized));
 		expect(element.data('daterangepicker').dateLimit.asSeconds()).toBe(moment.duration(limitAmount, limitUnit).asSeconds());
-	});	
+	});
+
+	it('passes on ranges from scope to daterangepicker instance', function () {
+		$ngRootScope.ranges = {
+			'Today': [moment().startOf('day'), moment()],
+			// accepts string formatted dates
+			'Yesterday': [moment().subtract('days', 1).format('YYYY-MM-DD'), moment().subtract('days', 1).format('YYYY-MM-DD')]
+		};
+		var element = $ngCompile('<input type="daterange" ng-model="dummy" ranges="ranges">')($ngRootScope);
+		expect(element.data('daterangepicker').ranges.Today).not.toBeUndefined();
+		expect(element.data('daterangepicker').ranges.Today[0].format('YYYY-MM-DD')).toBe(moment().startOf('day').format('YYYY-MM-DD'));
+		expect(element.data('daterangepicker').ranges.Today[1].format('YYYY-MM-DD')).toBe(moment().format('YYYY-MM-DD'));
+		expect(element.data('daterangepicker').ranges.Yesterday).not.toBeUndefined();
+		expect(element.data('daterangepicker').ranges.Yesterday[0].format('YYYY-MM-DD')).toBe(moment().subtract('days', 1).format('YYYY-MM-DD'));
+		expect(element.data('daterangepicker').ranges.Yesterday[1].format('YYYY-MM-DD')).toBe(moment().subtract('days', 1).format('YYYY-MM-DD'));
+	});
+	
+	
 });

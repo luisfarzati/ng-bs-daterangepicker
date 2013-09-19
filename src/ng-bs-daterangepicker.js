@@ -6,7 +6,7 @@
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('input', function ($compile) {
+angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
 	return {
 		restrict: 'E',
 		require: 'ngModel',
@@ -19,6 +19,7 @@ angular.module('ngBootstrap', []).directive('input', function ($compile) {
 			options.minDate = $attributes.minDate && moment($attributes.minDate);
 			options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
 			options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
+			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
 
 			function format(date) {
 				return date.format(options.format);
