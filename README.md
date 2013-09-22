@@ -63,18 +63,26 @@ The result object `$scope.myDateRange` has a `startDate` and `endDate` propertie
 * `dateLimit`: mapped from `limit` attribute;
 * `format`: mapped from `format` attribute;
 * `separator`: mapped from `separator` attribute.
+* `ranges`: mapped from `ranges` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
 
 Example with all above features:
 
 ```
-<input type="daterange" ng-model="dates" min-date="2013-09-10" max-date="2013-09-25" limit="3 days" format="L" separator="/">
+<input
+	type="daterange"
+	ng-model="dates"
+	min-date="2013-09-10"
+	max-date="2013-09-25"
+	limit="3 days"
+	format="L"
+	separator="/"
+	ranges="{'Special Range':{'startDate': '2013-09-2', 'endDate': '2013-09-5'}}">
 ```
 
 The `limit` attribute lets you specify a number and unit similarly as you would invoke `moment.duration()`.
 
 ### Features to be implemented:
 
-* `ranges`
 * `timePicker*`
 * `show*`
 * other formatting options like `*Class` and stuff 
