@@ -33,6 +33,8 @@ module.exports = function(grunt) {
     uglify: {
        options: {
           preserveComments: 'some',
+          sourceMap: 'dist/ng-bs-daterangepicker.min.js.map',
+          sourceMappingURL: 'ng-bs-daterangepicker.min.js.map',
           report: 'min'
        },
        dist: {
