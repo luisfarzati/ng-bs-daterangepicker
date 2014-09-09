@@ -29,6 +29,7 @@
   "dependencies": {
   },
   "devDependencies": {
+    "bower": "latest",
     "grunt": "latest",
     "grunt-karma": "latest",
     "grunt-contrib-jshint": "latest",
