@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           autoWatch: true,
           singleRun: true,
           files: [
-            'src/components/jquery/jquery.js',
+            'src/components/jquery/dist/jquery.js',
             'src/components/angular/angular.js',
             'src/components/angular-mocks/angular-mocks.js',
             'src/components/bootstrap/dist/js/bootstrap.js',

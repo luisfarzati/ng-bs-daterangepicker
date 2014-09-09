@@ -3,9 +3,11 @@
   "version": "0.0.3",
   "main": "./src/ng-bs-daterangepicker.js",
   "dependencies": {
+    "jquery": "latest",
     "angular": ">= 1.0.7",
     "bootstrap-daterangepicker": "*",
-    "bootstrap": "~3.0.0"
+    "bootstrap": "~3.0.0",
+    "momentjs": "latest"
   },
   "devDependencies": {
     "angular-mocks": ">= 1.0.7"
