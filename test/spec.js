@@ -66,5 +66,9 @@ describe('the daterange directive', function () {
 		expect(element.data('daterangepicker').ranges.Yesterday[1].format('YYYY-MM-DD')).toBe(moment().subtract(1, 'days').format('YYYY-MM-DD'));
 	});
 
+	it('passes opens option from attributes to daterangepicker instance', function () {
+		var element = $ngCompile('<input type="daterange" ng-model="dummy" opens="left">')($ngRootScope);
+		expect(element.data('daterangepicker').opens).toBe('left');
+	});
 
 });

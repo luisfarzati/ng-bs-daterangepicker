@@ -21,7 +21,7 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 			options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
 			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
 			options.locale = $attributes.locale && $parse($attributes.locale)($scope);
-			options.opens = $attributes.opens && $parse($attributes.opens)($scope);
+			options.opens = $attributes.opens;
 
 			function format(date) {
 				return date.format(options.format);
