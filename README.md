@@ -86,7 +86,7 @@ The `limit` attribute lets you specify a number and unit similarly as you would 
 
 * `timePicker*`
 * `show*`
-* other formatting options like `*Class` and stuff 
+* other formatting options like `*Class` and stuff
 
 ### Build
 
