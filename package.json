@@ -34,6 +34,7 @@
     "grunt-karma": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-uglify": "latest",
+    "karma-jasmine": "latest",
     "karma-phantomjs-launcher": "latest"
   }
 }
