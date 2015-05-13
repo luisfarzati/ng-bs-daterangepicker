@@ -6,7 +6,7 @@
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
+angular.module('ngBootstrap', []).directive('input', function ($compile, $parse, $filter) {
 	return {
 		restrict: 'E',
 		require: '?ngModel',
@@ -23,43 +23,59 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 			options.locale = $attributes.locale && $parse($attributes.locale)($scope);
 			options.opens = $attributes.opens && $parse($attributes.opens)($scope);
 
+                        function datify(date){
+                            return moment.isMoment(date) ? date.toDate() : date;
+                        }
+                        
+                        function momentify (date){
+                            return moment.isMoment(date) ? moment(date) : date;
+                        }
+                        
 			function format(date) {
-				return date.format(options.format);
+				return $filter('date')(datify(date), options.format.replace(/Y/g, 'y').replace(/D/g, 'd')); //date.format(options.format);
 			}
 
 			function formatted(dates) {
 				return [format(dates.startDate), format(dates.endDate)].join(options.separator);
 			}
 
-			ngModel.$formatters.unshift(function (modelValue) {
+			/*ngModel.$formatters.unshift(function (modelValue) {
 				if (!modelValue) return '';
 				return modelValue;
 			});
 
 			ngModel.$parsers.unshift(function (viewValue) {
 				return viewValue;
-			});
+			});*/
 
 			ngModel.$render = function () {
 				if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
 				$element.val(formatted(ngModel.$viewValue));
 			};
 
-			$scope.$watch($attributes.ngModel, function (modelValue) {
+			$scope.$watch(function () { return $attributes.ngModel; }, function (modelValue, oldModelValue) {
 				if (!modelValue || (!modelValue.startDate)) {
 					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
 					return;
 				}
-				$element.data('daterangepicker').startDate = modelValue.startDate;
-				$element.data('daterangepicker').endDate = modelValue.endDate;
+                                if (oldModelValue !== modelValue) return;
+                                
+				$element.data('daterangepicker').startDate = momentify(modelValue.startDate);
+				$element.data('daterangepicker').endDate = momentify(modelValue.endDate);
 				$element.data('daterangepicker').updateView();
 				$element.data('daterangepicker').updateCalendars();
 				$element.data('daterangepicker').updateInputText();
 			});
 
 			$element.daterangepicker(options, function(start, end) {
-				$scope.$apply(function () {
-					ngModel.$setViewValue({ startDate: start, endDate: end });
+                                var modelValue = ngModel.$viewValue;
+                                if (angular.equals(start, modelValue.startDate) && angular.equals(end, modelValue.endDate)) return;
+                                
+                                $scope.$apply(function () {
+					ngModel.$setViewValue({ 
+                                            startDate: (moment.isMoment(modelValue.startDate)) ? start : start.toDate(), 
+                                            endDate: (moment.isMoment(modelValue.endDate)) ? end : end.toDate()
+                                        });
 					ngModel.$render();
 				});
 			});			
