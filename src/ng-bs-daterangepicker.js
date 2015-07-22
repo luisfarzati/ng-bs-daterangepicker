@@ -22,15 +22,19 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse,
 			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
 			options.locale = $attributes.locale && $parse($attributes.locale)($scope);
 			options.opens = $attributes.opens && $parse($attributes.opens)($scope);
-			options.timePicker = $attributes.enabletimepicker && $parse($attributes.enabletimepicker)($scope);
-
-                        function datify(date){
-                            return moment.isMoment(date) ? date.toDate() : date;
-                        }
-                        
-                        function momentify (date){
-                            return moment.isMoment(date) ? moment(date) : date;
-                        }
+			
+			if ($attributes.enabletimepicker) {
+				options.timePicker = true;
+				angular.extend(options, $parse($attributes.enabletimepicker)($scope));
+            }
+			
+			function datify(date){
+				return moment.isMoment(date) ? date.toDate() : date;
+			}
+			
+			function momentify (date){
+				return moment.isMoment(date) ? moment(date) : date;
+			}
                         
 			function format(date) {
 				return $filter('date')(datify(date), options.format.replace(/Y/g, 'y').replace(/D/g, 'd')); //date.format(options.format);
