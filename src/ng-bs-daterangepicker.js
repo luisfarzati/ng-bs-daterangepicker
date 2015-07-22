@@ -79,7 +79,7 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse,
                                         });
 					ngModel.$render();
 				});
-			});			
+			});
 		}
 	};
 });

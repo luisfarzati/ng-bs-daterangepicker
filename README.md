@@ -65,6 +65,7 @@ The result object `$scope.myDateRange` has a `startDate` and `endDate` propertie
 * `separator`: mapped from `separator` attribute.
 * `enableTimePicker`: mapped from `timePicker` attribute.
 * `ranges`: mapped from `ranges` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
+* `opens`: mapped from `open` attribute. Can be `right` or `left`.
 
 Example with all above features:
 
@@ -86,7 +87,7 @@ The `limit` attribute lets you specify a number and unit similarly as you would 
 
 * Some `timePicker*`
 * `show*`
-* other formatting options like `*Class` and stuff 
+* other formatting options like `*Class` and stuff
 
 ### Build
 
