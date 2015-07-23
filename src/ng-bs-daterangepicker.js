@@ -51,7 +51,6 @@
 				}
 
 				ngModel.$render = function() {
-					console.log('render')
 					if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) {
 						return;
 					}
@@ -61,8 +60,6 @@
 				$scope.$watch(function() {
 					return $attributes.ngModel;
 				}, function(modelValue, oldModelValue) {
-
-					console.log('watch')
 
 					if (!modelValue || (!modelValue.startDate)) {
 						ngModel.$setViewValue({
