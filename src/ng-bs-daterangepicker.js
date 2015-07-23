@@ -39,7 +39,7 @@
 				}
 
 				function momentify(date) {
-					return moment.isMoment(date) ? moment(date) : date;
+					return (!moment.isMoment(date)) ? moment(date) : date;
 				}
 
 				function format(date) {
@@ -61,7 +61,7 @@
 					return $attributes.ngModel;
 				}, function(modelValue, oldModelValue) {
 
-					if (!modelValue || (!modelValue.startDate)) {
+					if (!$scope[modelValue] || (!$scope[modelValue].startDate)) {
 						ngModel.$setViewValue({
 							startDate: moment().startOf('day'),
 							endDate: moment().startOf('day')
@@ -73,8 +73,8 @@
 						return;
 					}
 
-					$element.data('daterangepicker').startDate = momentify(modelValue.startDate);
-					$element.data('daterangepicker').endDate = momentify(modelValue.endDate);
+					$element.data('daterangepicker').startDate = momentify($scope[modelValue].startDate);
+					$element.data('daterangepicker').endDate = momentify($scope[modelValue].endDate);
 					$element.data('daterangepicker').updateView();
 					$element.data('daterangepicker').updateCalendars();
 					$element.data('daterangepicker').updateInputText();
