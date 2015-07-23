@@ -27,7 +27,7 @@
 				}));
 				options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
 				options.locale = $attributes.locale && $parse($attributes.locale)($scope);
-				options.opens = $attributes.opens && $parse($attributes.opens)($scope);
+				options.opens = $attributes.opens || $parse($attributes.opens)($scope);
 
 				if ($attributes.enabletimepicker) {
 					options.timePicker = true;
@@ -50,17 +50,10 @@
 					return [format(dates.startDate), format(dates.endDate)].join(options.separator);
 				}
 
-				/*ngModel.$formatters.unshift(function (modelValue) {
-					if (!modelValue) return '';
-					return modelValue;
-				});
-
-				ngModel.$parsers.unshift(function (viewValue) {
-					return viewValue;
-				});*/
-
 				ngModel.$render = function() {
-					if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
+					if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) {
+						return;
+					}
 					$element.val(formatted(ngModel.$viewValue));
 				};
 
