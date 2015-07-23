@@ -1,6 +1,6 @@
 {
   "name": "ng-bs-daterangepicker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./src/ng-bs-daterangepicker.js",
   "dependencies": {
     "jquery": "latest",
