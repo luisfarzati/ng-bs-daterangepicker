@@ -1,8 +1,10 @@
 module.exports = function(grunt) {
+
   'use strict';
 
   // Project configuration.
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
@@ -25,24 +27,26 @@ module.exports = function(grunt) {
             'bower_components/momentjs/min/moment.min.js',
             'bower_components/bootstrap-daterangepicker/daterangepicker.js',
             'src/ng-bs-daterangepicker.js',
-            'test/**/*.js']
+            'test/**/*.js'
+          ]
         }
       }
     },
 
     uglify: {
-       options: {
-          preserveComments: 'some',
-          sourceMap: 'dist/ng-bs-daterangepicker.min.js.map',
-          sourceMappingURL: 'ng-bs-daterangepicker.min.js.map',
-          report: 'min'
-       },
-       dist: {
-          files: {
-             'dist/ng-bs-daterangepicker.min.js': ['src/ng-bs-daterangepicker.js']
-          }
-       }
-     }
+      options: {
+        preserveComments: 'some',
+        sourceMap: 'dist/ng-bs-daterangepicker.min.js.map',
+        sourceMappingURL: 'ng-bs-daterangepicker.min.js.map',
+        report: 'min'
+      },
+      dist: {
+        files: {
+          'dist/ng-bs-daterangepicker.min.js': ['src/ng-bs-daterangepicker.js']
+        }
+      }
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -50,4 +54,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['jshint', 'karma']);
+
 };

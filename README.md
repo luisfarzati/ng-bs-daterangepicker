@@ -93,8 +93,7 @@ The `limit` attribute lets you specify a number and unit similarly as you would 
 
 ### Build
 
-You can run the tests by running
-
+You can run the tests by running:
 ```
 npm install
 bower install
@@ -102,7 +101,6 @@ grunt
 ```
 
 assuming you already have `grunt` installed, otherwise you also need to do:
-
 ```
 npm install -g grunt-cli
 ```
