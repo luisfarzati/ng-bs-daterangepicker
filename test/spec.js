@@ -15,6 +15,7 @@ describe('the daterange directive', function() {
 	});
 
 	it('creates an instance with default values', function() {
+
 		var element = $ngCompile('<input type="daterange" ng-model="dummy">')($ngRootScope);
 		$ngRootScope.$apply();
 
@@ -26,6 +27,7 @@ describe('the daterange directive', function() {
 		expect(element.data('daterangepicker').maxDate).toBe(false);
 		expect(element.data('daterangepicker').dateLimit).toBe(false);
 		expect(JSON.stringify(element.data('daterangepicker').ranges)).toBe(JSON.stringify({}));
+
 	});
 
 	it('creates an instance with provided values', function() {
@@ -42,8 +44,8 @@ describe('the daterange directive', function() {
 			element = $ngCompile('<input type="daterange" ng-model="dates" format="' + format + '" separator="' + separator + '" min-date="' + minDate + '" max-date="' + maxDate + '" limit="' + limitAmount + ' ' + limitUnit + '">')($ngRootScope);
 
 		$ngRootScope.dates = {
-			startDate: moment(startDate),
-			endDate: moment(endDate)
+			startDate: startDate,
+			endDate: endDate
 		};
 
 		$ngRootScope.$apply();
