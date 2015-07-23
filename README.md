@@ -1,62 +1,64 @@
 ng-bs-daterangepicker
-=====================
+---
 
 Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
 
 Demo: http://luisfarzati.github.io/ng-bs-daterangepicker
 
 Installation
-------------
+---
 
 Using bower:
-
 ```
 bower install ng-bs-daterangepicker
 ```
 
 Using npm:
-
 ```
 npm install ng-bs-daterangepicker
 ```
 
-
 How to use it
--------------
+---
 
 You should already have a bunch of scripts and CSS required for bootstrap-daterangepicker:
 
-```
+CSS:
+```html
 <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="daterangepicker-bs3.css">
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="bootstrap.min.js"></script>
-<script type="text/javascript" src="moment.min.js"></script>
-<script type="text/javascript" src="daterangepicker.js"></script>
-<script type="text/javascript" src="angular.min.js"></script>
+```
+
+JavaScript:
+```html
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="moment.min.js"></script>
+<script src="daterangepicker.js"></script>
+<script src="angular.min.js"></script>
 ```
 
 to the list above, you should add:
 
-```
-<script type="text/javascript" src="ng-bs-daterangepicker.js"></script>
+```html
+<script src="ng-bs-daterangepicker.js"></script>
 ```
 
 Then, inject `ngBootstrap` in your application module:
 
-```
+```js
 angular.module('myApp', ['ngBootstrap']);
 ```
 
 and then just add an `input` of type `daterange`:
 
-```
-<input type="daterange" ng-model="myDateRange">
+```html
+<input type="daterange" ng-model="myDateRange" />
 ```
 
 The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.
 
-### Implemented features so far
+### Implemented features so far:
 
 * `startDate`, `endDate`: are taken from the `ng-model` object;
 * `minDate`, `maxDate`: mapped from `min-date` and `max-date` attributes;
@@ -69,7 +71,7 @@ The result object `$scope.myDateRange` has a `startDate` and `endDate` propertie
 
 Example with all above features:
 
-```
+```html
 <input
 	type="daterange"
 	ng-model="dates"
@@ -105,10 +107,4 @@ assuming you already have `grunt` installed, otherwise you also need to do:
 npm install -g grunt-cli
 ```
 
-
-
-
-
-
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/luisfarzati/ng-bs-daterangepicker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
