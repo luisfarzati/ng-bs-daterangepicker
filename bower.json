@@ -1,0 +1,15 @@
+{
+  "name": "ng-bs-daterangepicker",
+  "version": "0.0.4",
+  "main": "./src/ng-bs-daterangepicker.js",
+  "dependencies": {
+    "jquery": "latest",
+    "angular": ">= 1.0.7",
+    "bootstrap-daterangepicker": "1.3.17",
+    "bootstrap": "~3.0.0",
+    "momentjs": "< 2.9.0"
+  },
+  "devDependencies": {
+    "angular-mocks": ">= 1.0.7"
+  }
+}
